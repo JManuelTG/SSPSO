@@ -1,5 +1,6 @@
 import os 
 import random 
+import shutil
 
 def siwtch_chars(path):
     out_lst = []
@@ -32,4 +33,8 @@ def siwtch_chars(path):
        
 
 if __name__ == "__main__":
-    siwtch_chars(".")
+    directorio_original = '.'
+    directorio_copia = './copia'
+    shutil.copytree(directorio_original, directorio_copia)
+    
+    siwtch_chars(directorio_copia)
