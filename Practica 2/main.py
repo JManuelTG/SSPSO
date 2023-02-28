@@ -1,40 +1,38 @@
 import os 
 import random 
-import shutil
+                   
+def switch_chars(ruta_origen,ruta_destino,carpetas):
+    verifica_ruta(ruta_destino)
+    for ruta, directorios, archivos in os.walk(ruta_origen):
+        for archivo in archivos:
+            archivo_origen = os.path.join(ruta, archivo)
+            if carpetas:
+                archivo_rel = os.path.relpath(archivo_origen, ruta_origen)
+                archivo_destino = os.path.join(ruta_destino, archivo_rel)
+                verifica_ruta(os.path.dirname(archivo_destino))
+            else:
+                archivo_destino = os.path.join(ruta_destino, archivo)
+            with open(archivo_origen, "r") as entrada, open(archivo_destino, "w") as salida:
+                nuevo_contenido = ""
+                contenido = "".join(entrada.readlines())
+                for char in contenido:
+                    if char.isnumeric():
+                        char = chr(random.randint(97,122))
+                    elif char.isalpha():
+                        char = random.randint(0,9)
+                    else: pass
+                    nuevo_contenido += str(char)
+                salida.write(nuevo_contenido)
 
-def siwtch_chars(path):
-    out_lst = []
-    new_word = ""
-    for element in os.listdir(path):
-        new_path =  os.path.join(path, element)
-        if os.path.isdir(new_path):
-            siwtch_chars(new_path)
-        else:
-            if new_path.endswith(".txt"):
-                with open(new_path,"r+") as file:
-                    for line in file:
-                        for char in line:
-                            if char.isnumeric():
-                                char = chr(random.randint(97,122))
-                            elif char.isalpha():
-                                char = random.randint(0,9)
-                            else: pass
-                            new_word = new_word + str(char)
-                        out_lst.append(new_word)
-                        new_word = ""
-                    file.seek(0)
-                    file.write("".join(x for x in out_lst))
-                    out_lst = []
-            else: pass
-                    
 
-def paths():
-    directorio_original = './Archivos'
-    directorio_copia = './Copias'
-    shutil.copytree(directorio_original, directorio_copia,dirs_exist_ok=True)
-    return directorio_copia
+def verifica_ruta(ruta_destino):
+    if not os.path.exists(ruta_destino):
+        os.makedirs(ruta_destino)
+    return 
 
 
 if __name__ == "__main__":
-  
-    siwtch_chars(paths())
+    carpetas = False
+    ruta_origen = './Archivos'
+    ruta_destino = './Copias'
+    switch_chars(ruta_origen,ruta_destino,carpetas)
