@@ -8,6 +8,7 @@ def switch_chars(ruta_origen,ruta_destino,carpetas):
             archivo_origen = os.path.join(ruta, archivo)
             if carpetas:
                 archivo_rel = os.path.relpath(archivo_origen, ruta_origen)
+                print(archivo_rel)
                 archivo_destino = os.path.join(ruta_destino, archivo_rel)
                 verifica_ruta(os.path.dirname(archivo_destino))
             else:
