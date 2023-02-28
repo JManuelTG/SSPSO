@@ -33,8 +33,8 @@ def siwtch_chars(path):
        
 
 if __name__ == "__main__":
-    directorio_original = '.'
-    directorio_copia = './copia'
+    directorio_original = './Archivos'
+    directorio_copia = './Copias'
     shutil.copytree(directorio_original, directorio_copia)
     
     siwtch_chars(directorio_copia)
