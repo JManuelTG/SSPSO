@@ -1,4 +1,11 @@
-"""Algoritmos de planificacion"""\
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Mar  4 23:54:21 2023
+
+@author: Manuel
+
+Algoritmos de planificacion
+"""
 
 import heapq
 from collections import deque
