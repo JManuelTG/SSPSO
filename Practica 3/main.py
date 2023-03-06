@@ -55,7 +55,7 @@ class Planificadores:
     def fifo(self):
         lst = [element.split(",")[:1] for element in self.open_file()]
         lst = [process[0] for process in lst]
-        for i in range(len(lst)-1,-1,-1):
+        for i in range(len(lst)):
             terminado = lst.pop(0)
             print(f"Ejecutando proceso {terminado}")
             print(f"Proceso {terminado} terminado.\n")
