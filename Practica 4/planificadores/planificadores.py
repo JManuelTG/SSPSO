@@ -1,5 +1,6 @@
 import heapq
 from collections import deque
+import os
 
 class Planificadores:
     def __init__(self, file_path):
@@ -16,23 +17,31 @@ class Planificadores:
 
     def add_process(self):
         # Agrega un nuevo proceso a la lista de procesos
-        pid = input("Ingrese el nombre del proceso: ")
-        pt = int(input("Ingrese el tiempo de duración del proceso: "))
-        priority = int(input("Ingrese la prioridad del proceso: "))
-        position = int(input("Ingrese la posición donde desea agregar el proceso (al principio o al final): "))
-        print("\n\n")
-        if position >= 0 and position < len(self.processes):
-            self.processes.insert(position, (pid, pt, priority))
-        else:
-            self.processes.append((pid, pt, priority))
+        while True:
+            try:
+                pid = input("Ingrese el nombre del proceso: ")
+                pt = int(input("Ingrese el tiempo de duración del proceso: "))
+                priority = int(input("Ingrese la prioridad del proceso: "))
+                position = int(input("Ingrese la posición donde desea agregar el proceso: "))
+                
+                if position >= 0 and position <= len(self.processes):
+                    self.processes.insert(position, (pid, pt, priority))
+                else:
+                    self.processes.append((pid, pt, priority))
+                break
+            except ValueError:
+                print("Debe ingresar un número entero.")
+            except IndexError:
+                print("La posición ingresada está fuera de rango.")
 
 
     def round_robin(self, quantum):
+        os.system("CLS")
         queue = deque(self.processes)
         while queue:
             current_process = queue.popleft()
             process_id, process_time, process_priority = current_process
-            print(f"Ejecutando proceso {process_id}")
+            print(f"Ejecutando proceso '{process_id}' ")
             process_time -= quantum
             if process_time > 0:
                 queue.append((process_id, process_time, process_priority))
@@ -42,6 +51,7 @@ class Planificadores:
 
 
     def sjf(self):
+        os.system("CLS")
         queue = []
         for process in self.processes:
             heapq.heappush(queue, (process[1], process))
@@ -55,6 +65,7 @@ class Planificadores:
 
 
     def fifo(self):
+        os.system("CLS")
         for process in self.processes:
             process_id, process_time, process_priority = process
             print(f"Ejecutando proceso {process_id}")
@@ -62,6 +73,7 @@ class Planificadores:
 
 
     def prioridades(self):
+        os.system("CLS")
         queue = []
         for process in self.processes:
             heapq.heappush(queue, (process[2], process))
