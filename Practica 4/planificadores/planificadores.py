@@ -31,8 +31,7 @@ class Planificadores:
                 break
             except ValueError:
                 print("Debe ingresar un número entero.")
-            except IndexError:
-                print("La posición ingresada está fuera de rango.")
+
 
 
     def round_robin(self, quantum):
@@ -45,7 +44,7 @@ class Planificadores:
             process_time -= quantum
             if process_time > 0:
                 queue.append((process_id, process_time, process_priority))
-                print(f"Proceso {process_id} regresado a la cola con {process_time} unidades de tiempo restantes")
+                print(f"Proceso {process_id} regresado a la cola con {process_time} unidades de tiempo restantes\n")
             else:
                 print(f"Proceso {process_id} terminado")
 
@@ -83,4 +82,4 @@ class Planificadores:
             _, current_process = heapq.heappop(queue)
             process_id, process_time, process_priority = current_process
             print(f"Ejecutando proceso {process_id} con prioridad {process_priority}")
-            print(f"Proceso {process_id} terminado")
+            print(f"Proceso {process_id} terminado\n")
