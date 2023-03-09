@@ -34,9 +34,9 @@ class Planificadores:
             process_time -= quantum
             if process_time > 0:
                 queue.append((process_id, process_time))
-                print(f"Proceso {process_id} regresado a la cola con {process_time} unidades de tiempo restantes")
+                print(f"Proceso {process_id} regresado a la cola con {process_time} unidades de tiempo restantes\n")
             else:
-                print(f"Proceso {process_id} terminado")
+                print(f"Proceso {process_id} terminado\n")
 
     def sjf(self):
         lst = [element.split(",")[:2] for element in self.open_file()]
@@ -50,7 +50,7 @@ class Planificadores:
             _, current_process = heapq.heappop(queue)
             process_id, process_time = current_process
             print(f"Ejecutando proceso {process_id} durante {process_time} unidades de tiempo")
-            print(f"Proceso {process_id} terminado")
+            print(f"Proceso {process_id} terminado\n")
 
     def fifo(self):
         lst = [element.split(",")[:1] for element in self.open_file()]
