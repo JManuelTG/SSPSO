@@ -22,10 +22,9 @@ class Planificadores:
                 pid = input("Ingrese el nombre del proceso: ")
                 pt = int(input("Ingrese el tiempo de duración del proceso: "))
                 priority = int(input("Ingrese la prioridad del proceso: "))
-                position = int(input("Ingrese la posición donde desea agregar el proceso: "))
-                
-                if position >= 0 and position <= len(self.processes):
-                    self.processes.insert(position, (pid, pt, priority))
+                position = int(input("Ingrese la posición donde desea agregar el proceso: 0 == Inicio, 1 == Final "))
+                if position  == 0:
+                    self.processes.insert(0, (pid, pt, priority))
                 else:
                     self.processes.append((pid, pt, priority))
                 break
@@ -46,7 +45,7 @@ class Planificadores:
                 queue.append((process_id, process_time, process_priority))
                 print(f"Proceso {process_id} regresado a la cola con {process_time} unidades de tiempo restantes\n")
             else:
-                print(f"Proceso {process_id} terminado")
+                print(f"Proceso {process_id} terminado\n")
 
 
     def sjf(self):
@@ -60,7 +59,7 @@ class Planificadores:
             _, current_process = heapq.heappop(queue)
             process_id, process_time, process_priority = current_process
             print(f"Ejecutando proceso {process_id} durante {process_time} unidades de tiempo")
-            print(f"Proceso {process_id} terminado")
+            print(f"Proceso {process_id} terminado\n")
 
 
     def fifo(self):
