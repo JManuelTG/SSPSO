@@ -28,7 +28,7 @@ class App():
         ttk.Button(sidebar, text="SJF", command=self.planificadores.sjf).pack(pady=10)
         ttk.Button(sidebar, text="FIFO", command=self.planificadores.fifo).pack(pady=10)
         ttk.Button(sidebar, text="Prioridades", command=self.planificadores.prioridades).pack(pady=10)
-        ttk.Button(sidebar, text="Agregar", command=self.add_process).pack(pady=10)
+        ttk.Button(sidebar, text="Agregar", command=self.ventana_agregar_proceso).pack(pady=10)
         ttk.Button(sidebar, text="Actualiza", command=self.actualizar_tabla).pack(pady=10)
         ttk.Button(sidebar, text="Salir", command=self.frame.quit).pack(side=BOTTOM, pady=10)
 
@@ -72,7 +72,8 @@ class App():
             self.table.insert('','end', values=item)
         self.table.pack(fill=X,padx=10,pady=5)
 
-    def add_process(self):
+
+    def ventana_agregar_proceso(self):
         ventana = Toplevel()
         ventana.title("Agregar procesos")
         ventana.geometry("500x205")
@@ -99,8 +100,12 @@ class App():
         prioridad_label.grid(row=2,column=0,padx=20,pady=10)
 
         ttk.Button(frame, text="Agregar", command=lambda: (self.planificadores.add_process(id_proceso.get(),int(tiempo.get()),int(prioridad.get())),
-                                                           messagebox.showinfo("Aviso","Proceso agregado con exito"))).grid(row=4,column=0,pady=10)
+                                                           messagebox.showinfo("Aviso","Proceso agregado con exito"),
+                                                           id_proceso.delete(0,"end"),tiempo.delete(0,"end"),
+                                                           prioridad.delete(0,"end"))).grid(row=4,column=0,pady=10)
         ttk.Button(frame, text="Salir", command=ventana.destroy).grid(row=4,column=2,pady=10)
+
+
 
  
 
