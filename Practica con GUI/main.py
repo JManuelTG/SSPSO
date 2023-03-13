@@ -9,6 +9,7 @@ Algoritmos de planificacion
 from tkinter import Tk
 from app.app import App
 
+
 if __name__ == "__main__":
     root = Tk()
     my_app = App(root)

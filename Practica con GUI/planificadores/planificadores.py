@@ -33,7 +33,8 @@ class Planificadores:
 
 
 
-    def round_robin(self, quantum):
+    def round_robin(self):
+        quantum = 3
         os.system("CLS")
         queue = deque(self.processes)
         while queue:
@@ -82,3 +83,6 @@ class Planificadores:
             process_id, process_time, process_priority = current_process
             print(f"Ejecutando proceso {process_id} con prioridad {process_priority}")
             print(f"Proceso {process_id} terminado\n")
+    
+    def get_procesos(self):
+        return self.processes
