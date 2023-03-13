@@ -15,18 +15,11 @@ class Planificadores:
                 self.processes.append((pid, int(pt), int(priority)))
 
 
-    def add_process(self):
+    def add_process(self, pid,pt,priority):
         # Agrega un nuevo proceso a la lista de procesos
         while True:
             try:
-                pid = input("Ingrese el nombre del proceso: ")
-                pt = int(input("Ingrese el tiempo de duración del proceso: "))
-                priority = int(input("Ingrese la prioridad del proceso: "))
-                position = int(input("Ingrese la posición donde desea agregar el proceso: 0 == Inicio, 1 == Final "))
-                if position  == 0:
-                    self.processes.insert(0, (pid, pt, priority))
-                else:
-                    self.processes.append((pid, pt, priority))
+                self.processes.append((pid, pt, priority))
                 break
             except ValueError:
                 print("Debe ingresar un número entero.")
