@@ -30,7 +30,7 @@ class App():
         ttk.Button(sidebar, text="    SJF    ",bootstyle="success-outline", command=self.planificadores.sjf).pack(pady=10)
         ttk.Button(sidebar, text="   FIFO    ",bootstyle="success-outline", command=self.planificadores.fifo).pack(pady=10)
         ttk.Button(sidebar, text="Prioridades",bootstyle="success-outline", command=self.planificadores.prioridades).pack(pady=10)
-        ttk.Button(sidebar, text="   Salir   ",bootstyle="success-outline", command=self.frame.quit).pack(side=BOTTOM, pady=10)
+        ttk.Button(sidebar, text="   Salir   ",bootstyle="danger-outline", command=self.frame.quit).pack(side=BOTTOM, pady=10)
 
         #Panel derecho
         content = Frame(self.frame, bd=1, bg="#D3D0CB", borderwidth=2)
