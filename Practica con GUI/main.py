@@ -8,10 +8,10 @@ Algoritmos de planificacion
 """
 from tkinter import Tk
 from app.app import App
-
+import ttkbootstrap as ttk
 
 if __name__ == "__main__":
-    root = Tk()
+    root = ttk.Window(themename="darkly")
     my_app = App(root)
     root.mainloop()
 
